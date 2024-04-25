@@ -19,6 +19,7 @@ function App() {
 
   const handleClearList = () => {
     setTodos([]);
+    toast.error("All Todos", { theme: "dark", draggable: true });
   };
   const removeItem = (id) => {
     // [1, 2, 3, 4]
@@ -26,7 +27,7 @@ function App() {
       return todo.id != id;
     });
     setTodos(newTodos);
-    console.log("removeItem " + id);
+    toast.error("Todo Deleted", { theme: "dark", draggable: true });
   };
   const handleChange = (e) => {
     setName(e.target.value);
@@ -35,7 +36,7 @@ function App() {
     e.preventDefault();
 
     if (!name) {
-      toast("Please write todo");
+      toast.warning("Please Enter Todo", { theme: "dark", draggable: true });
     } else if (name && isEditing) {
       const newTodosList = todos.map(function (todo) {
         if (todo.id === editId) {
